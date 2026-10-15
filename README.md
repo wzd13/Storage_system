@@ -1,54 +1,54 @@
 # NimbusVault
 
-基于 PHP 和 MySQL 的网页文件管理系统。用户可以登录后上传、预览、下载、整理文件，管理员可以管理账号和系统设置。
+A web file manager built with PHP and MySQL. Users sign in to upload, preview, download, and organize files. Administrators manage accounts and system settings.
 
-## 功能
+## Features
 
-- 邮箱登录，区分管理员和普通用户
-- 文件夹、上传、重命名、移动、删除和恢复
-- 图片、PDF、文本在线预览，其他类型直接下载
-- 存储用量和最近操作记录
-- 管理员创建用户，并设置允许的文件类型、上传大小和回收站保留天数
+- Email login with separate admin and user roles
+- Folders, upload, rename, move, delete, and restore
+- In-browser preview for images, PDFs, and text; other types download directly
+- Storage usage and recent activity
+- Admin tools to create users and set allowed file types, upload size, and trash retention
 
-## 环境
+## Requirements
 
-- PHP 8.1 或更高版本（需要 PDO MySQL）
-- MySQL 5.7 或更高版本
-- Apache，并开启 `mod_rewrite`（项目用 `.htaccess` 禁止直接访问配置、函数和上传目录）
+- PHP 8.1 or newer (PDO MySQL)
+- MySQL 5.7 or newer
+- Apache with `mod_rewrite` (`.htaccess` blocks direct access to config, includes, and uploads)
 
-## 安装
+## Setup
 
-1. 把项目放到网站目录，例如 `htdocs/storage_system`。
-2. 复制配置文件：
+1. Place the project in your web root, for example `htdocs/storage_system`.
+2. Copy the config file:
 
    ```bash
    copy config\db.local.example.php config\db.local.php
    ```
 
-3. 编辑 `config/db.local.php`，填入本机数据库主机、库名、用户名和密码。`APP_BASE_URL` 要和实际访问路径一致，默认是 `/storage_system`。
-4. 用浏览器打开该路径。第一次连接数据库时会自动建库、建表，并写入演示账号。
+3. Edit `config/db.local.php` and set your database host, name, user, and password. `APP_BASE_URL` must match the URL path. The default is `/storage_system`.
+4. Open that path in a browser. The first connection creates the database, tables, and demo accounts.
 
-`config/db.local.php` 和 `storage/` 里的用户文件已加入 `.gitignore`，不会提交到仓库。
+`config/db.local.php` and uploaded files in `storage/` are listed in `.gitignore` and are not committed.
 
-## 演示账号
+## Demo accounts
 
-这些账号只用于本地演示，正式使用前请修改密码。
+These accounts are for local demos only. Change the passwords before real use.
 
-| 角色 | 邮箱 | 密码 |
+| Role | Email | Password |
 | --- | --- | --- |
-| 管理员 | admin@cloudvault.local | admin123 |
-| 普通用户 | demo@cloudvault.local | demo123 |
+| Admin | admin@cloudvault.local | admin123 |
+| User | demo@cloudvault.local | demo123 |
 
-## 目录
+## Layout
 
 ```text
-admin.php          管理后台
-dashboard.php      文件工作台
-login.php          登录
-download.php       下载
-view.php           预览
-config/            数据库连接；真实密码放在 db.local.php
-includes/          公共函数
-assets/            样式和脚本
-storage/           用户上传文件（不入库）
+admin.php          Admin panel
+dashboard.php      File workspace
+login.php          Sign in
+download.php       Download
+view.php           Preview
+config/            Database connection; real credentials live in db.local.php
+includes/          Shared functions
+assets/            Styles and scripts
+storage/           User uploads (not committed)
 ```
