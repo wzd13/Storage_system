@@ -1,0 +1,34 @@
+# Local database credentials
+config/db.local.php
+
+# User uploads (keep the access-deny rule)
+storage/*
+!storage/.htaccess
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.sql
+*.sqlite
+*.sqlite3
+
+# Logs, cache, and temp files
+*.log
+cache/
+tmp/
+temp/
+
+# Dependencies
+vendor/
+node_modules/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
